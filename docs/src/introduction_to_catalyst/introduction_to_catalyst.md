@@ -1,4 +1,4 @@
-# [Introduction to Catalyst](@id using_catalyst)
+# [Introduction to Catalyst](@id introduction_to_catalyst)
 In this tutorial we provide an introduction to using Catalyst to specify
 chemical reaction networks, and then to solve ODE, jump, and SDE models
 generated from them. At the end we show what mathematical rate laws and
@@ -57,14 +57,14 @@ and
 reactions(repressilator)
 ```
 We can also use Latexify to see the corresponding reactions in Latex, which shows what
-the `hillr` terms correspond to mathematically
+the `hillr` terms mathematically correspond to 
 ```julia
 latexify(repressilator)
 ```
 ```@example tut1
 repressilator #hide
 ```
-Assuming [Graphviz](https://graphviz.org/) is installed and commandline
+Assuming [Graphviz](https://graphviz.org/) is installed and command line
 accessible, within a Jupyter notebook we can also graph the reaction network by
 ```julia
 g = Graph(repressilator)
@@ -91,7 +91,7 @@ have rates that depend on the proteins, and hence lead to red arrows from each
 Note, from the REPL or scripts one can always use [`savegraph`](@ref) to save
 the graph (assuming `Graphviz` is installed).
 
-## Mass Action ODE Models
+## Mass action ODE models
 Let's now use our `ReactionSystem` to generate and solve a corresponding mass
 action ODE model. We first convert the system to a `ModelingToolkit.ODESystem`
 by
@@ -167,7 +167,7 @@ documentation](https://docs.sciml.ai/DiffEqDocs/stable/solvers/ode_solve/).
 
 ---
 
-## Stochastic Simulation Algorithms (SSAs) for Stochastic Chemical Kinetics
+## Stochastic simulation algorithms (SSAs) for stochastic chemical kinetics
 Let's now look at a stochastic chemical kinetics model of the repressilator,
 modeling it with jump processes. Here, we will construct a
 [JumpProcesses](https://docs.sciml.ai/JumpProcesses/stable/) `JumpProblem` that uses
@@ -178,7 +178,7 @@ the jump process:
 # redefine the initial condition to be integer valued
 u₀map = [:m₁ => 0, :m₂ => 0, :m₃ => 0, :P₁ => 20, :P₂ => 0, :P₃ => 0]
 
-# next we create a discrete problem to encode that our species are integer valued:
+# next we create a discrete problem to encode that our species are integer-valued:
 dprob = DiscreteProblem(repressilator, u₀map, tspan, pmap)
 
 # now, we create a JumpProblem, and specify Gillespie's Direct Method as the solver:
@@ -199,7 +199,7 @@ Common questions that arise in using the JumpProcesses SSAs (i.e. Gillespie meth
 are collated in the [JumpProcesses FAQ](https://docs.sciml.ai/stable/modules/JumpProcesses/faq/).
 
 ---
-## Chemical Langevin Equation (CLE) Stochastic Differential Equation (SDE) Models
+## Chemical Langevin equation (CLE) stochastic differential equation (SDE) models
 At an intermediate physical scale between macroscopic ODE models and microscopic
 stochastic chemical kinetics models lies the CLE, given by a system of SDEs that
 add to each ODE above a noise term. As the repressilator has species that get
